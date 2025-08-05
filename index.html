@@ -84,7 +84,30 @@
 
     .menu{
       text-align: center;
-      margin: 20px;
+      margin: -40px 0 40px 0;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1.2rem;
+      font-size: 0.9rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #fff;
+      cursor: pointer;
+      margin: 4px 2px 4px 2px;
+      transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .filter-btn:hover {
+      background-color: #f0f0f0;
+    }
+
+    .filter-btn.active {
+      background-color: #898181;
+      color: #211e1e;
+      border-color: #a9a8a8;
     }
 
     .grid {
@@ -195,6 +218,15 @@
       padding: 0 1rem;
     }
 
+    .divider {
+      border: 0;
+      height: 1px;
+      background-color: #e0e0e0;
+      width: 90%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
     @media (max-width: 992px) {
       .main-wrapper {
         flex-direction: column;
@@ -243,6 +275,8 @@
       </p>
     </div>
   </div>
+
+  <hr class="divider"/>
 
   <div class="main-wrapper">
 
