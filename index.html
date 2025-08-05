@@ -36,7 +36,6 @@
     .music-bar {
       flex: 1;
       padding-right: 100px;
-      padding-top: 200px;
     }
 
     .container {
@@ -48,7 +47,6 @@
       background: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      margin-left: 100px;
       padding: 1rem;
       max-height: 600px;
       overflow-y: auto;
@@ -195,6 +193,17 @@
       margin-top: 1rem;
       max-width: 720px;
       padding: 0 1rem;
+    }
+
+    @media (max-width: 992px) {
+      .main-wrapper {
+        flex-direction: column;
+        width: 95%;
+      }
+      .sidebar {
+        margin-top: 2rem;
+        max-height: 300px;
+      }
     }
 
     @media (max-width: 768px) {
