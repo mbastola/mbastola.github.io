@@ -18,38 +18,16 @@
       background-image: url('./site/images/header.jpg');
       background-size: cover;
       background-position: center;
-      padding: 50rem 2rem 6rem 2rem;
+      padding: 15rem 2rem 12rem 2rem;
       text-align: center;
-      padding-bottom: -30px;
       color: #fff;
-      position: relative;
-    }
-
-    .profile-pic {
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;
-      border: 4px solid white;
-      object-fit: cover;
-      position: absolute;
-      bottom: -10rem;
-      left: 28%;
-      transform: translateX(-40%);
-      background-color: #fff;
-    }
-
-    .contact-line {
-      margin-top: 2rem;
-      text-align: center;
-      font-size: 1rem;
-      color: #333;
     }
 
     .main-wrapper {
       display: flex;
       flex-direction: row;
       justify-content: center;
-      gap: 2rem;
+      gap: 2rem; 
       margin: 2rem auto;
       width: 90%;
       max-width: 1400px;
@@ -172,10 +150,6 @@
       text-decoration: underline;
     }
 
-    #bio {
-      margin-top: 60px;
-    }
-
     #show-more {
       display: block;
       margin: 2rem auto;
@@ -188,29 +162,82 @@
       color: white;
       cursor: pointer;
     }
+
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: -10rem;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 2rem;
+    }
+
+    .profile-pic {
+      width: 20rem;
+      height: 20rem;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .contact-line {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    #bio {
+      margin-top: 1rem;
+      max-width: 720px;
+      padding: 0 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .profile-pic {
+        width: 15rem;
+        height: 15rem;
+      }
+      .profile-container {
+        margin-top: -7.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .profile-pic {
+        width: 10rem;
+        height: 10rem;
+      }
+      .profile-container {
+        margin-top: -5rem;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="hero">
-    <img class="profile-pic" src="./site/images/prof.jpg" alt="Profile Picture"/>
   </header>
 
-  <div class="contact-line">
-    💼 linkedin.com/in/mbastola &nbsp;&nbsp;&nbsp; ☕️ github.com/mbastola  <br/><br/>
-    📍 Chicago, IL &nbsp;&nbsp;&nbsp; 📍🛫 Kathmandu, Nepal <br/>
+  <div class="profile-container">
+    <img class="profile-pic" src="./site/images/prof.jpg" alt="Profile Picture"/>
+    <div class="contact-line">
+      💼 linkedin.com/in/mbastola &nbsp;&nbsp;&nbsp; ☕️ github.com/mbastola  <br/><br/>
+      📍 Chicago, IL &nbsp;&nbsp;&nbsp; 📍🛫 Kathmandu, Nepal <br/>
+    </div>
+    <div id="bio">
+      <p>
+        Senior Machine Learning engineer with a strong background in ML, Computer Vision, 3D & Reinforcement Learning. I build scalable, production-grade AI pipelines and am currently exploring multimodal generative models. This portfolio highlights my open-source work and personal research interests.
+      </p>
+    </div>
   </div>
 
   <div class="main-wrapper">
 
     <div class="container">
-
-      <section>
-        <div id="bio">
-          <p>
-            Senior Machine Learning engineer with a strong background in ML, Computer Vision, 3D & Reinforcement Learning. I build scalable, production-grade AI pipelines and am currently exploring multimodal generative models. This portfolio highlights my open-source work and personal research interests.
-            </p></p>
-        </div>
-      </section>
 
       <section>
         
