@@ -63,7 +63,7 @@ for repo in repos:
 
 projects.sort(key=lambda x: x["updated"], reverse=True)
 
-with open("site/projects.json", "w") as f:
+with open("projects.json", "w") as f:
     json.dump(projects, f, indent=2)
 
 print("site/projects.json created with", len(projects), "items and tags included.")
