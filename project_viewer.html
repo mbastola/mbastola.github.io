@@ -6,13 +6,19 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    
     body, html {
       margin: 0;
       padding: 0;
-      display: flex;
+      height:100%;
+      overflow: hidden;
       flex-direction: column;
       font-family: 'Helvetica Neue', sans-serif;
-      background-color: #fafafa;
+      background-color: #fff;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
     }
     .viewer-header {
       background-color: #fff;
@@ -39,29 +45,22 @@
     }
     main {
       display: flex;
-      min-height: 100vh; /* Set a minimum height to ensure content area is substantial */
+      /*flex: 1;
+      height: 100%;*/
+      height: 100%;
+      overflow: hidden;
     }
     #project-image-container img {
       width: 100%;
       height: 450px;
       object-fit: contain; 
       display: block;
-      background-color: #f0f2f5;  /* A fallback background */
       margin: 20px;
+      background-color: #fff;
     }
     iframe {
       flex: 1;
       border: none;
-    }
-    .tags-section {
-      padding: 1.5rem 4rem;
-      background-color: #fdfdfd;
-      border-top: 1px solid #e0e0e0;
-    }
-    .tags-section h3 {
-        margin-top: 0;
-        margin-bottom: 1rem;
-        color: #333;
     }
     .tag {
       display: inline-block;
@@ -82,6 +81,10 @@
       border-top: 1px solid #e0e0e0;
       font-size: 0.9rem;
     }
+    .scroll-container {
+      flex: 1;
+    }
+
   </style>
 </head>
 <body>
@@ -89,14 +92,13 @@
     <h1 id="project-title">Project Viewer</h1>
     <a id="back-to-portfolio" href="/index.html">← Back to Portfolio</a>
   </header>
-  <div id="project-image-container"></div>
-  <main id="main-content"></main>
-  <div id="tags-container" class="tags-section" style="display: none;">
-    <h3>Project Tags</h3>
-    <div id="tag-list"></div>
+  <div class="scroll-container">
+    <div id="project-image-container"></div>
+    <main id="main-content"></main>
   </div>
   <footer class="viewer-footer">
-    <p>Viewing content from <a id="external-url" href="#" target="_blank" rel="noopener noreferrer">external source</a></p>
+    <div id="tag-list"></div>
+    <!--p>Viewing content from <a id="external-url" href="#" target="_blank" rel="noopener noreferrer">external source</a></p-->
   </footer>
   <script>
     window.addEventListener('DOMContentLoaded', async () => {
@@ -131,21 +133,9 @@
         document.title = projectTitle + " | Project Viewer";
         document.getElementById('project-title').textContent = projectTitle;
 
-        if (rawProjectImgUrl) {
-            // The image path in projects.json is relative to the root, but this page is in /site.
-            // We adjust the path to be relative to this page's location.
-            // e.g. ./site/images/foo.jpg -> ./images/foo.jpg
-            const projectImgUrl = rawProjectImgUrl.replace('./site/', 'site/');
-            const imgContainer = document.getElementById('project-image-container');
-            const img = document.createElement('img');
-            img.src = projectImgUrl;
-            img.alt = projectTitle;
-            imgContainer.appendChild(img);
-        }
-
-        const externalLink = document.getElementById('external-url');
-        externalLink.href = projectUrl;
-        externalLink.textContent = new URL(projectUrl).hostname;
+        //const externalLink = document.getElementById('external-url');
+        //externalLink.href = projectUrl;
+        //externalLink.textContent = new URL(projectUrl).hostname;
         
         if (readmeUrl) {
             mainContent.innerHTML = '<p style="text-align:center; padding: 2rem;">Loading README...</p>';
@@ -238,14 +228,24 @@
             iframe.src = projectUrl;
             mainContent.appendChild(iframe);
         }
+        
+        if (rawProjectImgUrl) {
+            // The image path in projects.json is relative to the root, but this page is in /site.
+            // We adjust the path to be relative to this page's location.
+            // e.g. ./site/images/foo.jpg -> ./images/foo.jpg
+            const projectImgUrl = rawProjectImgUrl.replace('./site/', 'site/');
+            const imgContainer = document.getElementById('project-image-container');
+            const img = document.createElement('img');
+            img.src = projectImgUrl;
+            img.alt = projectTitle;
+            imgContainer.appendChild(img);
+        }
 
         if (tags && tags.length > 0) {
-            const tagsContainer = document.getElementById('tags-container');
             const tagList = document.getElementById('tag-list');
             const filteredTags = tags.filter(tag => tag && tag.toLowerCase() !== 'all');
 
             if (filteredTags.length > 0) {
-                tagsContainer.style.display = 'block';
                 filteredTags.forEach(tagText => {
                     const tagEl = document.createElement('span');
                     tagEl.className = 'tag';
