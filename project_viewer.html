@@ -186,7 +186,7 @@
 
             return { project: p, score: score };
         })
-        .filter(item => item.score > 0)
+        .filter(item => item.score > -0.2)
         .sort((a, b) => b.score - a.score);
 
       return scoredProjects.slice(0, count).map(item => item.project);
