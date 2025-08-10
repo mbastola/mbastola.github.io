@@ -45,10 +45,7 @@
     }
     main {
       display: flex;
-      /*flex: 1;
-      height: 100%;*/
-      height: 100%;
-      overflow: hidden;
+      flex: 1;
     }
     #project-image-container img {
       width: 100%;
@@ -83,6 +80,8 @@
     }
     .scroll-container {
       flex: 1;
+      overflow-x:hidden;
+      overflow-y:auto;
     }
 
   </style>
@@ -159,17 +158,18 @@
                 // Defensive check: if href is not a string (e.g., from malformed markdown ![alt]()),
                 // return the alt text or an empty string to prevent errors.
                 href = href.href
-                console.log(href)
                 if (typeof href !== 'string') {
                   return text || '';
                  }
                 // Don't modify absolute URLs (http, https, or data URIs)
                 if (href.startsWith('http') || href.startsWith('data:')) {
-                  return `<img src="${href}" alt="${text}" ${title ? `title="${title}"` : ''}>`;
+                  href = href.split(`${projectTitle}/`)[1]
+                  //return `<img src="${href}" alt="${text}" ${title ? `title="${title}"` : ''}>`;
                 }
+                console.log(href)
                 // Prepend the base URL for raw content to relative image paths
                 const fullUrl = new URL(href, imageBaseUrl).href;
-                return `<img src="${fullUrl}" alt="${href.href}" ${title ? `title="${title}"` : ''}>`;
+                return `<img src="${fullUrl}" alt="${href}" ${title ? `title="${title}"` : ''}>`;
               };
 
               const bodyContent = marked.parse(markdown, { renderer });
@@ -214,6 +214,15 @@
               iframe.id = 'project-frame';
               iframe.title = 'Project README';
               iframe.srcdoc = iframeHtml;
+              // Add an onload event to resize the iframe to its content height.
+              // This eliminates the iframe's own scrollbar, allowing the parent
+              // .scroll-container to be the single scrolling element.
+              iframe.onload = () => {
+                const body = iframe.contentWindow.document.body;
+                const html = iframe.contentWindow.document.documentElement;
+                const height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+                iframe.style.height = `${height}px`;
+              };
 
               mainContent.innerHTML = ''; // Clear loading message
               mainContent.appendChild(iframe);
