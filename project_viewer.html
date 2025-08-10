@@ -279,7 +279,14 @@
             try {
               const response = await fetch(readmeUrl);
               if (!response.ok) throw new Error(`Failed to fetch README. Status: ${response.status}`);
-              const markdown = await response.text();
+              let markdown = await response.text();
+
+              // To handle raw HTML <img> tags in READMEs, we must convert GitHub blob URLs
+              // to raw content URLs before parsing the markdown.
+              markdown = markdown.replace(
+                /src="https:\/\/github\.com\/(.*?)\/blob\/(.*?)"/g,
+                'src="https://raw.githubusercontent.com/$1/$2"'
+              );
 
               const isDarkMode = theme === 'dark';
               const themeStyleUrl = isDarkMode
@@ -304,7 +311,6 @@
                   href = href.split(`${projectTitle}/`)[1]
                   //return `<img src="${href}" alt="${text}" ${title ? `title="${title}"` : ''}>`;
                 }
-                console.log(href)
                 // Prepend the base URL for raw content to relative image paths
                 const fullUrl = new URL(href, imageBaseUrl).href;
                 return `<img src="${fullUrl}" alt="${href}" ${title ? `title="${title}"` : ''}>`;
