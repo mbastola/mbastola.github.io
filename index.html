@@ -382,7 +382,7 @@
         desc.textContent = `Last updated: ${new Date(proj.updated).toDateString()}`;
 
         const projectIndex = proj.originalIndex;
-        const viewerUrl = `site/project_viewer.html?index=${projectIndex}`;
+        const viewerUrl = `project_viewer.html?index=${projectIndex}`;
         content.href = viewerUrl;
         content.target = "_blank";
 
