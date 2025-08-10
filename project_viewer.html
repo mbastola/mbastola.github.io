@@ -182,7 +182,7 @@
                 mainContent.appendChild(readmeContainer);
             } catch (error) {
                 console.error('Error loading README, redirecting to project URL.', error);
-                window.location.href = projectUrl;
+                //window.location.href = projectUrl;
             }
         } else {
             const iframe = document.createElement('iframe');
@@ -209,7 +209,7 @@
         }
       } catch (error) {
         console.error('Error loading project data:', error);
-        mainContent.innerHTML = `<p style="text-align:center; padding: 2rem; color: red;">Could not load project. ${error.message}</p>`;
+        //mainContent.innerHTML = `<p style="text-align:center; padding: 2rem; color: red;">Could not load project. ${error.message}</p>`;
       }
     });
   </script>
