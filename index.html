@@ -288,8 +288,6 @@
           <button class="filter-btn" data-filter="nn">Neural Nets</button>
           <button class="filter-btn" data-filter="rl">Reinforcement Learning</button>
           <button class="filter-btn" data-filter="3d">3D</button>
-          <button class="filter-btn" data-filter="rl">Physics Informed NNs</button>
-          <button class="filter-btn" data-filter="rl">Gen AI</button>
           </nav>
         </div>      
         <div class="grid" id="repo-grid"></div>
@@ -363,8 +361,10 @@
       const next = allProjects.slice(visibleCount, visibleCount + limit);
       next.forEach((proj, i) => {
         const card = document.createElement("div");
-        category = proj.category;
-        card.className = `card category-${category}`;
+        card.className = "card"
+        for ( const cat of proj.category ){
+          card.className += ` category-${cat}`;
+        }
         const img = document.createElement("img");
         img.src = proj.img;
         img.onerror = () => img.src = "https://placehold.co/400x300";

@@ -2,7 +2,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "LSTMs & Chaotic Dynamics",
-    "category":"rl",
+    "category":["nn","ai4s"],
     "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/deep-neural-nets/lstm",
     "img": "./site/images/repos/lstm.jpg",
     "updated": "2021-06-23T04:41:02Z",
@@ -12,17 +12,17 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "A-star (A*) search",
-    "category":"rl",
+    "category":["rl"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Reinforcement-Learning/a-star",
     "img": "./site/images/repos/a_star.png",
     "updated": "2019-03-11T04:41:02Z",
     "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/Reinforcement-Learning/a-star/README.md",
-    "tags": ["All","reinforcement learning","datascience","epsilon greedy","Machine Learning","matplotlib","numpy","optimistic iv","pandas","python","statistics","thompson sampling","ucb1"]
+    "tags": ["All","reinforcement learning","matplotlib","numpy","a-star search","python","dfs","bfs","breadth-first search","depth-first search","tree search", "maze-solver", "heuristics"]
   },
   {
     "repo": "machine-learning-in-python",
     "folder": "Minimax",
-    "category":"rl",
+    "category":["rl"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Reinforcement-Learning/min-max",
     "img": "./site/images/repos/minimax.png",
     "updated": "2019-03-20T04:41:02Z",
@@ -32,7 +32,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "Expectimax",
-    "category":"rl",
+    "category":["rl"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Reinforcement-Learning/expectimax",
     "img": "./site/images/repos/expectimax.webp",
     "updated": "2019-04-01T04:41:02Z",
@@ -42,7 +42,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "Markov-Decision-Processes",
-    "category":"rl",
+    "category":["rl"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Reinforcement-Learning/mdp",
     "img": "./site/images/repos/mdp.webp",
     "updated": "2019-06-11T04:41:02Z",
@@ -52,7 +52,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "Monte-Carlo",
-    "category":"rl",
+    "category":["rl"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Reinforcement-Learning/monte-carlo",
     "img": "./site/images/repos/monte_carlo.png",
     "updated": "2019-07-12T04:41:02Z",
@@ -62,7 +62,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "Q-learning",
-    "category":"rl",
+    "category":["rl"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Reinforcement-Learning/q-learning",
     "img": "./site/images/repos/q-learn.png",
     "updated": "2019-08-23T04:41:02Z",
@@ -72,7 +72,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "Hypothesis-Testing-III-Bayesian-Methods",
-    "category":"ml",
+    "category":["ml"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Hypothesis-Testing-III-Bayesian-Methods",
     "img": "./site/images/repos/slots1.jpg",
     "updated": "2018-07-20T04:41:02Z",
@@ -82,7 +82,7 @@
   {
     "repo": "neural-nets-in-python",
     "folder": "cnn-advanced-architecture-3D",
-    "category":"nn",
+    "category":["nn","cv"],
     "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/convolutional-neural-nets/cnn-advanced-architecture-3D",
     "img": "./site/images/repos/conv4.jpg",
     "updated": "2020-11-14T19:37:52Z",
@@ -92,7 +92,7 @@
   {
     "repo": "neural-nets-in-python",
     "folder": "cnn-advanced-architecture",
-    "category":"nn",
+    "category":["nn","cv"],
     "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/convolutional-neural-nets/cnn-advanced-architecture",
     "img": "./site/images/repos/cnn3.jpeg",
     "updated": "2020-11-14T19:37:52Z",
@@ -102,7 +102,7 @@
   {
     "repo": "neural-nets-in-python",
     "folder": "cnn-learning-hyper-params",
-    "category":"nn",
+    "category":["nn","cv"],
     "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/convolutional-neural-nets/cnn-learning-hyper-params",
     "img": "./site/images/repos/hyperparam.png",
     "updated": "2020-11-14T19:37:52Z",
@@ -112,7 +112,7 @@
   {
     "repo": "neural-nets-in-python",
     "folder": "cnn-tensorflow",
-    "category":"nn",
+    "category":["nn","cv"],
     "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/convolutional-neural-nets/cnn-tensorflow",
     "img": "./site/images/repos/cnn1.jpeg",
     "updated": "2020-11-14T19:37:52Z",
@@ -122,7 +122,7 @@
   {
     "repo": "neural-nets-in-python",
     "folder": "neural_style_transfer",
-    "category":"nn",
+    "category":["nn","cv"],
     "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/convolutional-neural-nets/neural_style_transfer",
     "img": "./site/images/repos/nst.png",
     "updated": "2020-11-14T19:37:52Z",
@@ -132,7 +132,7 @@
   {
     "repo": "neural-nets-in-python",
     "folder": "ann-tensorflow",
-    "category":"nn",
+    "category":["nn"],
     "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/deep-neural-nets/ann-tensorflow",
     "img": "./site/images/repos/deep2.png",
     "updated": "2020-11-14T19:33:23Z",
@@ -142,7 +142,7 @@
   {
     "repo": "neural-nets-in-python",
     "folder": "ann-numpy",
-    "category":"nn",
+    "category":["nn"],
     "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/deep-neural-nets/ann-numpy",
     "img": "./site/images/repos/deep.png",
     "updated": "2020-11-14T19:33:23Z",
@@ -152,7 +152,7 @@
   {
     "repo": "computer-vision-cpp-python",
     "folder": "Eigen_faces",
-    "category":"cv",
+    "category":["cv"],
     "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/courseworks-non-opencv/Eigen_faces",
     "img": "./site/images/repos/eigenf.jpg",
     "updated": "2020-11-14T01:23:43Z",
@@ -162,7 +162,7 @@
   {
     "repo": "computer-vision-cpp-python",
     "folder": "Features_Detection_And_Matching",
-    "category":"cv",
+    "category":["cv"],
     "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/courseworks-non-opencv/Features_Detection_And_Matching",
     "img": "./site/images/repos/houghp.png",
     "updated": "2020-11-14T01:23:43Z",
@@ -172,7 +172,7 @@
   {
     "repo": "computer-vision-cpp-python",
     "folder": "Panorama",
-    "category":"cv",
+    "category":["cv"],
     "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/courseworks-non-opencv/Panorama",
     "img": "./site/images/repos/yosemite.jpg",
     "updated": "2020-11-14T01:23:43Z",
@@ -182,7 +182,7 @@
   {
     "repo": "computer-vision-cpp-python",
     "folder": "features-matching",
-    "category":"cv",
+    "category":["cv"],
     "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/features-matching",
     "img": "./site/images/repos/homography3.png",
     "updated": "2020-11-14T01:23:43Z",
@@ -192,7 +192,7 @@
   {
     "repo": "computer-vision-cpp-python",
     "folder": "image-restoration",
-    "category":"cv",
+    "category":["cv"],
     "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/image-restoration",
     "img": "./site/images/repos/restore.jpg",
     "updated": "2020-11-14T01:23:43Z",
@@ -202,7 +202,7 @@
   {
     "repo": "computer-vision-cpp-python",
     "folder": "motion-tracking",
-    "category":"cv",
+    "category":["cv"],
     "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/motion-tracking",
     "img": "./site/images/repos/optical.png",
     "updated": "2020-11-14T01:23:43Z",
@@ -212,7 +212,7 @@
   {
     "repo": "computer-vision-cpp-python",
     "folder": "panorama-opencv",
-    "category":"cv",
+    "category":["cv"],
     "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/panorama-opencv",
     "img": "./site/images/repos/epipolar.png",
     "updated": "2020-11-14T01:23:43Z",
@@ -222,7 +222,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "Linear-Regression",
-    "category":"ml",
+    "category":["ml"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Linear-Regression",
     "img": "./site/images/repos/math.jpg",
     "updated": "2018-04-14T03:13:32Z",
@@ -232,7 +232,7 @@
   {
     "repo": "computer-vision-cpp-python",
     "folder": "object-detection-ssd-opencv",
-    "category":"cv",
+    "category":["cv"],
     "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/object-detection-ssd-opencv",
     "img": "./site/images/repos/ssd.png",
     "updated": "2020-11-12T02:43:21Z",
@@ -242,7 +242,7 @@
   {
     "repo": "neural-nets-in-python",
     "folder": "Brachistochrone",
-    "category":"rl",
+    "category":["rl","nn","ai4s"],
     "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/deep-reinforcement-learning/brachistochrone",
     "img": "./site/images/repos/brach.jpg",
     "updated": "2019-09-09T03:16:19Z",
@@ -252,7 +252,7 @@
   {
     "repo": "computer-vision-cpp-python",
     "folder": "multi_view_structure_sfm",
-    "category":"3d",
+    "category":["3d","cv"],
     "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/multi_view_structure_sfm",
     "img": "./site/images/repos/mvs.png",
     "updated": "2018-10-28T17:01:00Z",
@@ -262,7 +262,7 @@
   {
     "repo": "computer-vision-cpp-python",
     "folder": "multi_view_structure_sfm2",
-    "category":"3d",
+    "category":["3d","cv"],
     "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/multi_view_structure_sfm2",
     "img": "./site/images/repos/mvs3.png",
     "updated": "2018-10-28T17:01:00Z",
@@ -272,7 +272,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "Gaussian-Mixture-Models",
-    "category":"ml",
+    "category":["ml"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Gaussian-Mixture-Models",
     "img": "./site/images/repos/gmm_ml.jpg",
     "updated": "2018-09-16T13:12:00Z",
@@ -282,7 +282,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "Hypothesis-Testing",
-    "category":"ml",
+    "category":["ml"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Hypothesis-Testing",
     "img": "./site/images/repos/hypothesis1.jpeg",
     "updated": "2018-08-28T19:22:19Z",
@@ -292,7 +292,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "Hypothesis-Testing-II-Gaussian-Mixtures",
-    "category":"ml",
+    "category":["ml"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Hypothesis-Testing-II-Gaussian-Mixtures",
     "img": "./site/images/repos/finitemixturefitted.png",
     "updated": "2018-08-26T20:40:19Z",
@@ -302,7 +302,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "K-Means",
-    "category":"ml",
+    "category":["ml"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/K-Means",
     "img": "./site/images/repos/kmeans-featured.png",
     "updated": "2018-08-20T19:19:19Z",
@@ -312,7 +312,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "KNN",
-    "category":"ml",
+    "category":["ml"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/KNN",
     "img": "./site/images/repos/knn.jpg",
     "updated": "2018-05-05T19:19:19Z",
@@ -322,7 +322,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "Logistic-Regression",
-    "category":"ml",
+    "category":["ml"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Logistic-Regression",
     "img": "./site/images/repos/logit.png",
     "updated": "2018-08-20T19:19:19Z",
@@ -332,7 +332,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "NLP",
-    "category":"ml",
+    "category":["ml"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/NLP",
     "img": "./site/images/repos/nlp.png",
     "updated": "2018-05-11T19:19:19Z",
@@ -342,7 +342,7 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "facial-expressions",
-    "category":"ml",
+    "category":["ml","cv"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/SVM/facial-expressions",
     "img": "./site/images/repos/support.jpeg",
     "updated": "2018-05-20T19:19:19Z",
@@ -352,17 +352,17 @@
   {
     "repo": "machine-learning-in-python",
     "folder": "SVM",
-    "category":"ml",
+    "category":["ml"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/SVM/iris-dataset",
     "img": "./site/images/repos/svm2.png",
     "updated": "2018-05-08T19:19:19Z",
     "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/SVM/iris-dataset/README.md",
-    "tags": ["All", "datascience","Machine Learning","nonparametric methods","statistics","matplotlib","pandas","python","sklearn","supervised learning"]
+    "tags": ["All", "support vectors","datascience","Machine Learning","nonparametric methods","statistics","matplotlib","pandas","python","sklearn","supervised learning"]
   },
   {
     "repo": "machine-learning-in-python",
     "folder": "Trees",
-    "category":"ml",
+    "category":["ml"],
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Trees",
     "img": "./site/images/repos/forest.jpg",
     "updated": "2018-04-22T19:19:19Z",
@@ -372,7 +372,7 @@
   {
     "repo": "computer-vision-cpp-python",
     "folder": "two-view-geometry2",
-    "category":"3d",
+    "category":["3d","cv"],
     "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/two-view-geometry2",
     "img": "./site/images/repos/cnn1.jpeg",
     "updated": "2018-08-01T10:25:00Z",
@@ -382,7 +382,7 @@
   {
     "repo": "computer-vision-cpp-python",
     "folder": "two-view-geometry",
-    "category":"3d",
+    "category":["3d","cv"],
     "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/two-view-geometry",
     "img": "./site/images/repos/two_view.png",
     "updated": "2018-07-10T11:20:00Z",
@@ -392,7 +392,7 @@
   {
     "repo": "computer-vision-cpp-python",
     "folder": "camera-calibration",
-    "category":"3d",
+    "category": ["3d","cv"],
     "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/camera-calibration",
     "img": "./site/images/repos/calib.jpeg",
     "updated": "2018-06-26T13:12:00Z",
@@ -401,7 +401,7 @@
   },
   {
     "repo": "computer-vision-cpp-python",
-    "category":"3d",
+    "category":["3d","cv"],
     "folder": "camera-calibration2",
     "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/camera-calibration2",
     "img": "./site/images/repos/calib.png",
