@@ -162,7 +162,7 @@
   </div>
   <footer class="viewer-footer">
     <div id="tag-list"></div>
-    <!--p>Viewing content from <a id="external-url" href="#" target="_blank" rel="noopener noreferrer">external source</a></p-->
+    <p>Viewing content from <a id="external-url" href="#" target="_blank" rel="noopener noreferrer">external source</a></p>
   </footer>
   <script>
     function findSimilarProjects(currentProject, allProjects, count) {
@@ -186,7 +186,7 @@
 
             return { project: p, score: score };
         })
-        .filter(item => item.score > -0.2)
+        //.filter(item => item.score > -0.2)
         .sort((a, b) => b.score - a.score);
 
       return scoredProjects.slice(0, count).map(item => item.project);
@@ -236,6 +236,27 @@
       section.style.display = 'block';
     }
 
+    function renderFooterContent(project, allProjectsWithIndex) {
+        const similarProjects = findSimilarProjects(project, allProjectsWithIndex, 3);
+        renderSimilarProjects(similarProjects);
+
+        const { tags } = project;
+        if (tags && tags.length > 0) {
+            const tagList = document.getElementById('tag-list');
+            tagList.innerHTML = ''; // Clear existing tags
+            const filteredTags = tags.filter(tag => tag && tag.toLowerCase() !== 'all');
+
+            if (filteredTags.length > 0) {
+                filteredTags.forEach(tagText => {
+                    const tagEl = document.createElement('span');
+                    tagEl.className = 'tag';
+                    tagEl.textContent = tagText;
+                    tagList.appendChild(tagEl);
+                });
+            }
+        }
+    }
+
     window.addEventListener('DOMContentLoaded', async () => {
       const params = new URLSearchParams(window.location.search);
       const projectIndex = params.get('index');
@@ -270,9 +291,10 @@
         document.title = projectTitle + " | Project Viewer";
         document.getElementById('project-title').textContent = projectTitle;
 
-        //const externalLink = document.getElementById('external-url');
-        //externalLink.href = projectUrl;
-        //externalLink.textContent = new URL(projectUrl).hostname;
+        const externalLink = document.getElementById('external-url');
+        externalLink.href = projectUrl;
+        let temp = new URL(projectUrl).hostname;
+        externalLink.textContent = `${temp}/mbastola`;
         
         if (readmeUrl) {
             mainContent.innerHTML = '<p style="text-align:center; padding: 2rem;">Loading README...</p>';
@@ -295,10 +317,9 @@
               const bodyBgColor = isDarkMode ? '#282c34' : '#fff';
               const bodyColor = isDarkMode ? '#abb2bf' : '#24292e';
 
-              // Custom renderer to fix relative image paths in the README
+              // Custom renderer for marked.js to handle image paths
               const renderer = new marked.Renderer();
               const imageBaseUrl = readmeUrl.substring(0, readmeUrl.lastIndexOf('/') + 1);
-              console.log(imageBaseUrl)
               renderer.image = (href, title, text) => {
                 // Defensive check: if href is not a string (e.g., from malformed markdown ![alt]()),
                 // return the alt text or an empty string to prevent errors.
@@ -366,19 +387,22 @@
                 const html = iframe.contentWindow.document.documentElement;
                 const height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
                 iframe.style.height = `${height}px`;
+                renderFooterContent(project, allProjectsWithIndex);
               };
 
               mainContent.innerHTML = ''; // Clear loading message
               mainContent.appendChild(iframe);
             } catch (error) {
-                console.error('Error loading README, redirecting to project URL.', error);
-                window.location.href = projectUrl;
+                console.error('Error loading README.', error);
+                mainContent.innerHTML = `<p style="text-align:center; padding: 2rem; color: red;">Could not load README. <a href="${projectUrl}" target="_blank" rel="noopener noreferrer">View on GitHub</a></p>`;
+                renderFooterContent(project, allProjectsWithIndex);
             }
         } else {
             const iframe = document.createElement('iframe');
             iframe.id = 'project-frame';
             iframe.title = 'Project Content';
             iframe.src = projectUrl;
+            iframe.onload = () => renderFooterContent(project, allProjectsWithIndex);
             mainContent.appendChild(iframe);
         }
         
@@ -392,24 +416,6 @@
             img.src = projectImgUrl;
             img.alt = projectTitle;
             imgContainer.appendChild(img);
-        }
-
-        // Find and render similar projects
-        const similarProjects = findSimilarProjects(project, allProjectsWithIndex, 3);
-        renderSimilarProjects(similarProjects);
-
-        if (tags && tags.length > 0) {
-            const tagList = document.getElementById('tag-list');
-            const filteredTags = tags.filter(tag => tag && tag.toLowerCase() !== 'all');
-
-            if (filteredTags.length > 0) {
-                filteredTags.forEach(tagText => {
-                    const tagEl = document.createElement('span');
-                    tagEl.className = 'tag';
-                    tagEl.textContent = tagText;
-                    tagList.appendChild(tagEl);
-                });
-            }
         }
       } catch (error) {
         console.error('Error loading project data:', error);
