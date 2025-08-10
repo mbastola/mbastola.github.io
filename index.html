@@ -33,11 +33,6 @@
       max-width: 1400px;
     }
 
-    .music-bar {
-      flex: 1;
-      padding-right: 100px;
-    }
-
     .container {
       flex: 3;
     }
@@ -48,7 +43,7 @@
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       padding: 1rem;
-      max-height: 600px;
+      max-height: fit-content;
       overflow-y: auto;
     }
 
@@ -288,12 +283,13 @@
         <div class="menu">
           <nav>
           <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="nn">Neural Nets</button>
           <button class="filter-btn" data-filter="ml">Classical ML</button>
-          <button class="filter-btn" data-filter="3d">3D</button>
-          <button class="filter-btn" data-filter="cv">Computer Vision</button>
+          <button class="filter-btn" data-filter="cv">Vision</button>
+          <button class="filter-btn" data-filter="nn">Neural Nets</button>
           <button class="filter-btn" data-filter="rl">Reinforcement Learning</button>
-          
+          <button class="filter-btn" data-filter="3d">3D</button>
+          <button class="filter-btn" data-filter="rl">Physics Informed NNs</button>
+          <button class="filter-btn" data-filter="rl">Gen AI</button>
           </nav>
         </div>      
         <div class="grid" id="repo-grid"></div>
@@ -314,7 +310,12 @@
 
     async function loadProjects() {
       const res = await fetch("./site/projects.json");
-      allProjects = await res.json();
+      const originalProjects = await res.json();
+
+      // The projects.json is already sorted by date via the Python script.
+      // We map the projects to include their original index from the file,
+      // ensuring that links to the viewer page work correctly even after filtering by tags.
+      allProjects = originalProjects.map((proj, index) => ({ ...proj, originalIndex: index }));
 
       // Sort by most recently updated
       allProjects.sort((a, b) => new Date(b.updated) - new Date(a.updated));
@@ -360,7 +361,7 @@
       const grid = document.getElementById("repo-grid");
       const limit = 100;
       const next = allProjects.slice(visibleCount, visibleCount + limit);
-      next.forEach(proj => {
+      next.forEach((proj, i) => {
         const card = document.createElement("div");
         category = proj.category;
         card.className = `card category-${category}`;
@@ -380,7 +381,9 @@
         const desc = document.createElement("p");
         desc.textContent = `Last updated: ${new Date(proj.updated).toDateString()}`;
 
-        content.href = proj.url;
+        const projectIndex = proj.originalIndex;
+        const viewerUrl = `site/project_viewer.html?index=${projectIndex}`;
+        content.href = viewerUrl;
         content.target = "_blank";
 
         content.appendChild(img);
@@ -391,7 +394,7 @@
         grid.appendChild(card);
       });
 
-      visibleCount += limit;
+      visibleCount += next.length;
       if (visibleCount >= allProjects.length) {
         document.getElementById("show-more").style.display = "none";
       }

@@ -1,12 +1,21 @@
 [
   {
     "repo": "machine-learning-in-python",
+    "folder": "LSTMs & Chaotic Dynamics",
+    "category":"rl",
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/deep-neural-nets/lstm",
+    "img": "./site/images/repos/lstm.jpg",
+    "updated": "2021-06-23T04:41:02Z",
+    "tags": ["All","recurrent neural nets","rnn","chaos","lorenz attractor","machine learning","ARIMA","Autocorrelation","DFFTEKF","Fibonacci","Fourier Transforms","Kalman Filter","Logistic Map","Lyapunov Exponents","Non-Linear Dynamics","Time Series"]
+  },
+  {
+    "repo": "machine-learning-in-python",
     "folder": "A-star (A*) search",
     "category":"rl",
     "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Reinforcement-Learning/a-star",
     "img": "./site/images/repos/a_star.png",
     "updated": "2019-03-11T04:41:02Z",
-    "tags": ["All","bayesian bandits","datascience","epsilon greedy","Machine Learning","matplotlib","numpy","optimistic iv","pandas","python","statistics","thompson sampling","ucb1"]
+    "tags": ["All","reinforcement learning","datascience","epsilon greedy","Machine Learning","matplotlib","numpy","optimistic iv","pandas","python","statistics","thompson sampling","ucb1"]
   },
   {
     "repo": "machine-learning-in-python",

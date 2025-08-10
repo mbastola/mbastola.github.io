@@ -16,6 +16,7 @@ repos = repos_res.json()
 
 for repo in repos:
     repo_name = repo["name"]
+    default_branch = repo["default_branch"]
     contents_url = f"https://api.github.com/repos/{username}/{repo_name}/contents"
     contents_res = requests.get(contents_url, headers=headers)
 
@@ -26,15 +27,22 @@ for repo in repos:
     for item in contents:
         if item["type"] == "dir":
             folder_name = item["name"]
-            ignore_url = f"https://raw.githubusercontent.com/{username}/{repo_name}/main/{folder_name}/site/.ignore"
+            ignore_url = f"https://raw.githubusercontent.com/{username}/{repo_name}/{default_branch}/{folder_name}/site/.ignore"
             if requests.get(ignore_url).status_code == 200:
                 continue  # Skip if .ignore exists
 
-            tags_url = f"https://raw.githubusercontent.com/{username}/{repo_name}/main/{folder_name}/site/tags.txt"
+            tags_url = f"https://raw.githubusercontent.com/{username}/{repo_name}/{default_branch}/{folder_name}/site/tags.txt"
             tags_res = requests.get(tags_url)
             tags = []
             if tags_res.status_code == 200:
                 tags = [tag.strip() for tag in tags_res.text.split(",") if tag.strip()]
+
+            readme_url_val = None
+            readme_url = f"https://raw.githubusercontent.com/{username}/{repo_name}/{default_branch}/{folder_name}/README.md"
+            # Use a HEAD request to efficiently check for the README's existence
+            readme_res = requests.head(readme_url)
+            if readme_res.status_code == 200:
+                readme_url_val = readme_url
 
             commit_url = f"https://api.github.com/repos/{username}/{repo_name}/commits?path={folder_name}&per_page=1"
             commit_res = requests.get(commit_url, headers=headers)
@@ -47,14 +55,15 @@ for repo in repos:
                 "repo": repo_name,
                 "folder": folder_name,
                 "url": item["html_url"],
-                "img": f"https://raw.githubusercontent.com/{username}/{repo_name}/main/{folder_name}/image/main.jpg",
+                "img": f"https://raw.githubusercontent.com/{username}/{repo_name}/{default_branch}/{folder_name}/image/main.jpg",
                 "updated": commit_date,
-                "tags": tags
+                "tags": tags,
+                "readme_url": readme_url_val
             })
 
 projects.sort(key=lambda x: x["updated"], reverse=True)
 
-with open("projects.json", "w") as f:
+with open("site/projects.json", "w") as f:
     json.dump(projects, f, indent=2)
 
-print("projects.json created with", len(projects), "items and tags included.")
+print("site/projects.json created with", len(projects), "items and tags included.")
