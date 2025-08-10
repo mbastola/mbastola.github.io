@@ -288,6 +288,8 @@
           <button class="filter-btn" data-filter="nn">Neural Nets</button>
           <button class="filter-btn" data-filter="rl">Reinforcement Learning</button>
           <button class="filter-btn" data-filter="3d">3D</button>
+          <!--button class="filter-btn" data-filter="ai4s">AI4Science</button>
+          <button class="filter-btn" data-filter="genai">Gen AI</button-->
           </nav>
         </div>      
         <div class="grid" id="repo-grid"></div>
@@ -398,6 +400,7 @@
       if (visibleCount >= allProjects.length) {
         document.getElementById("show-more").style.display = "none";
       }
+      //console.log(visibleCount)
     }
 
     document.getElementById("show-more").addEventListener("click", renderProjects);

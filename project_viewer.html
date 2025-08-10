@@ -83,23 +83,159 @@
       overflow-x:hidden;
       overflow-y:auto;
     }
-
+    #similar-projects-section {
+      display: none; /* Hidden by default, shown by JS */
+      padding: 2rem 4rem;
+      background-color: #f9f9f9;
+      border-top: 1px solid #e0e0e0;
+    }
+    .similar-projects-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      padding-bottom: 10px;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 0;
+      text-decoration: none;
+    }
+    .card-content h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      text-decoration: none; /* For unvisited links */
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-top: 0.5rem;
+      color: #021e31d7;
+      font-weight: bold;
+    }
+    .card a {
+      text-decoration: none;
+    }
+    .card-content p {
+      font-size: 0.9rem;
+      margin: 0.5rem 0 0 0;
+      color: #555;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      padding-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
   <header class="viewer-header">
     <h1 id="project-title">Project Viewer</h1>
-    <a id="back-to-portfolio" href="/index.html">← Back to Portfolio</a>
+    <a id="back-to-portfolio" href="index.html">← Back to Main Page</a>
   </header>
   <div class="scroll-container">
     <div id="project-image-container"></div>
     <main id="main-content"></main>
+    <section id="similar-projects-section">
+      <h2 class="similar-projects-title">Similar items:</h2>
+      <div class="grid" id="similar-projects-grid">
+        <!-- Similar project cards will be injected here by JS -->
+      </div>
+    </section>
   </div>
   <footer class="viewer-footer">
     <div id="tag-list"></div>
     <!--p>Viewing content from <a id="external-url" href="#" target="_blank" rel="noopener noreferrer">external source</a></p-->
   </footer>
   <script>
+    function findSimilarProjects(currentProject, allProjects, count) {
+      const currentTags = new Set((currentProject.tags || []).filter(t => t.toLowerCase() !== 'all'));
+      const currentCategories = new Set(currentProject.category || []);
+      const currentProjectIndex = currentProject.originalIndex;
+
+      const scoredProjects = allProjects
+        .filter(p => p.originalIndex !== currentProjectIndex)
+        .map(p => {
+            if (!p.tags && !p.category) return { project: p, score: 0 };
+
+            const otherTags = new Set((p.tags || []).filter(t => t.toLowerCase() !== 'all'));
+            const otherCategories = new Set(p.category || []);
+
+            const tagIntersection = [...currentTags].filter(tag => otherTags.has(tag));
+            const categoryIntersection = [...currentCategories].filter(cat => otherCategories.has(cat));
+
+            // Weight categories more heavily than tags
+            const score = (categoryIntersection.length * 5) + tagIntersection.length;
+
+            return { project: p, score: score };
+        })
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score);
+
+      return scoredProjects.slice(0, count).map(item => item.project);
+    }
+
+    function renderSimilarProjects(similarProjects) {
+      const section = document.getElementById('similar-projects-section');
+      const grid = document.getElementById('similar-projects-grid');
+      if (!section || !grid || similarProjects.length === 0) {
+          if(section) section.style.display = 'none';
+          return;
+      }
+
+      grid.innerHTML = '';
+
+      similarProjects.forEach(proj => {
+          const card = document.createElement("div");
+          card.className = "card";
+
+          const contentLink = document.createElement("a");
+          contentLink.className = "card-content";
+          const viewerUrl = `project_viewer.html?index=${proj.originalIndex}`;
+          contentLink.href = viewerUrl;
+          contentLink.target = "_blank";
+
+          const img = document.createElement("img");
+          img.src = proj.img;
+          img.onerror = () => img.src = "https://placehold.co/400x300";
+          img.alt = proj.folder;
+
+          const wrapper = document.createElement("div");
+
+          const title = document.createElement("h3");
+          title.textContent = proj.folder;
+
+          const desc = document.createElement("p");
+          desc.textContent = `Last updated: ${new Date(proj.updated).toDateString()}`;
+
+          contentLink.appendChild(img);
+          wrapper.appendChild(title);
+          wrapper.appendChild(desc);
+          contentLink.appendChild(wrapper);
+          card.appendChild(contentLink);
+          grid.appendChild(card);
+      });
+
+      section.style.display = 'block';
+    }
+
     window.addEventListener('DOMContentLoaded', async () => {
       const params = new URLSearchParams(window.location.search);
       const projectIndex = params.get('index');
@@ -115,11 +251,13 @@
         const res = await fetch('./site/projects.json');
         if (!res.ok) throw new Error(`Network response was not ok: ${res.statusText}`);
         const projects = await res.json();
-        const project = projects[projectIndex];
+        const allProjectsWithIndex = projects.map((p, i) => ({...p, originalIndex: i}));
+        const project = allProjectsWithIndex[projectIndex];
 
         if (!project) {
             throw new Error(`Project with index ${projectIndex} not found.`);
         }
+
 
         const {
             folder: projectTitle,
@@ -249,6 +387,10 @@
             img.alt = projectTitle;
             imgContainer.appendChild(img);
         }
+
+        // Find and render similar projects
+        const similarProjects = findSimilarProjects(project, allProjectsWithIndex, 3);
+        renderSimilarProjects(similarProjects);
 
         if (tags && tags.length > 0) {
             const tagList = document.getElementById('tag-list');
