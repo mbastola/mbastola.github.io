@@ -1,6 +1,16 @@
 [
   {
     "repo": "neural-nets-in-python",
+    "folder": "diffusion",
+    "category":["nn"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/advanced-concepts/diffusion",
+    "img": "./site/images/repos/unetdiffusion.jpg",
+    "updated": "2024-09-20T12:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/advanced-concepts/diffusion/README.md",
+    "tags": ["All","machine learning","diffusion","mnist","autoencoders","generative models","physics-inspired","pytorch","attention","unet"]
+  },
+  {
+    "repo": "neural-nets-in-python",
     "folder": "benchmarks-nn-frameworks",
     "category":["nn"],
     "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/advanced-concepts/benchmarks-nn-frameworks",
@@ -9,7 +19,7 @@
     "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/advanced-concepts/benchmarks-nn-frameworks/README.md",
     "tags": ["All","machine learning","JAX","mnist","benchmarks","frameworks","keras","pytorch","tensorflow","pynvml","gpu"]
   },
-    {
+  {
     "repo": "neural-nets-in-python",
     "folder": "vision-transformers",
     "category":["nn","cv"],
