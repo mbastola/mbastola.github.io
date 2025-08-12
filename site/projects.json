@@ -1,4 +1,24 @@
 [
+    {
+    "repo": "neural-nets-in-python",
+    "folder": "benchmarks-nn-frameworks",
+    "category":["nn"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/advanced-concepts/benchmarks-nn-frameworks",
+    "img": "./site/images/repos/jaxvtorvten.jpg",
+    "updated": "2024-07-05T12:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/advanced-concepts/benchmarks-nn-frameworks/README.md",
+    "tags": ["All","machine learning","JAX","mnist","benchmarks","frameworks","keras","pytorch","tensorflow","pynvml","gpu"]
+  },
+    {
+    "repo": "neural-nets-in-python",
+    "folder": "vision-transformers",
+    "category":["nn","cv"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/advanced-concepts/vision-transformers",
+    "img": "./site/images/repos/vit.png",
+    "updated": "2024-05-30T04:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/advanced-concepts/vision-transformers/README.md",
+    "tags": ["All","attention","transformer","vit","machine learning","vision transformer","cifar100","transfer learning","pytorch"]
+  },
   {
     "repo": "neural-nets-in-python",
     "folder": "machine-translation",
