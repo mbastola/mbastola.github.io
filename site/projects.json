@@ -1,13 +1,33 @@
 [
   {
-    "repo": "machine-learning-in-python",
+    "repo": "neural-nets-in-python",
+    "folder": "machine-translation",
+    "category":["nn"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/advanced-concepts/machine-translation",
+    "img": "./site/images/repos/indoeuro.jpg",
+    "updated": "2024-03-30T04:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/advanced-concepts/machine-translation/README.md",
+    "tags": ["All","attention","transformer","devnagari","machine learning","autogregression","nlp","language models","seq2seq","huggingface","pytorch"]
+  },
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "attention",
+    "category":["nn"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/advanced-concepts/attention",
+    "img": "./site/images/repos/multi_attn.png",
+    "updated": "2023-10-26T04:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/advanced-concepts/attention/README.md",
+    "tags": ["All","attention","transformer","machine learning","autogregression","nlp","language models","seq2seq","huggingface","pytorch"]
+  },
+  {
+    "repo": "neural-nets-in-python",
     "folder": "LSTMs & Chaotic Dynamics",
     "category":["nn","ai4s"],
     "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/deep-neural-nets/lstm",
     "img": "./site/images/repos/lstm.jpg",
     "updated": "2021-06-23T04:41:02Z",
     "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/deep-neural-nets/lstm/README.md",
-    "tags": ["All","rnn","chaos","lorenz attractor","machine learning","ARIMA","Autocorrelation","Fibonacci","Fourier Transforms","Kalman Filter","Logistic Map","Lyapunov Exponents","Non-Linear Dynamics","Time Series"]
+    "tags": ["All","rnn","chaos","lorenz attractor","machine learning","ARIMA","Autocorrelation","Fibonacci","Fourier Transforms","Kalman Filter","Logistic Map","Lyapunov Exponents","Non-Linear Dynamics","Time Series","keras"]
   },
   {
     "repo": "machine-learning-in-python",
@@ -87,7 +107,7 @@
     "img": "./site/images/repos/conv4.jpg",
     "updated": "2020-11-14T19:37:52Z",
     "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/convolutional-neural-nets/cnn-advanced-architecture-3D/README.md",
-    "tags": ["All", "cnn", "3d cnn", "computer vision", "deep learning", "ResNet", "3D convolution"]
+    "tags": ["All", "tensforflow","cnn", "3d cnn", "computer vision", "deep learning", "ResNet", "3D convolution"]
   },
   {
     "repo": "neural-nets-in-python",
@@ -97,7 +117,7 @@
     "img": "./site/images/repos/cnn3.jpeg",
     "updated": "2020-11-14T19:37:52Z",
     "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/convolutional-neural-nets/cnn-advanced-architecture/README.md",
-    "tags": ["All", "cnn", "computer vision", "deep learning", "ResNet", "Inception", "VGG", "AlexNet"]
+    "tags": ["All", "tensorflow","cnn", "computer vision", "deep learning", "ResNet", "Inception", "VGG", "AlexNet"]
   },
   {
     "repo": "neural-nets-in-python",
@@ -107,7 +127,7 @@
     "img": "./site/images/repos/hyperparam.png",
     "updated": "2020-11-14T19:37:52Z",
     "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/convolutional-neural-nets/cnn-learning-hyper-params/README.md",
-    "tags": ["All", "cnn", "hyperparameter tuning", "learning rate", "optimization", "grid search", "random search"]
+    "tags": ["All", "tensorflow","cnn", "hyperparameter tuning", "learning rate", "optimization", "grid search", "random search"]
   },
   {
     "repo": "neural-nets-in-python",
@@ -127,7 +147,7 @@
     "img": "./site/images/repos/nst.png",
     "updated": "2020-11-14T19:37:52Z",
     "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/convolutional-neural-nets/neural_style_transfer/README.md",
-    "tags": ["All", "neural style transfer", "nst", "cnn", "computer vision", "generative models", "tensorflow", "VGG"]
+    "tags": ["All", "keras","neural style transfer", "nst", "cnn", "computer vision", "generative models", "tensorflow", "VGG"]
   },
   {
     "repo": "neural-nets-in-python",
@@ -137,7 +157,7 @@
     "img": "./site/images/repos/deep2.png",
     "updated": "2020-11-14T19:33:23Z",
     "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/deep-neural-nets/ann-tensorflow/README.md",
-    "tags": ["All", "ann", "artificial neural network", "tensorflow", "keras", "deep learning"]
+    "tags": ["All", "tensorflow","ann", "artificial neural network", "tensorflow", "keras", "deep learning"]
   },
   {
     "repo": "neural-nets-in-python",
@@ -247,7 +267,7 @@
     "img": "./site/images/repos/brach.jpg",
     "updated": "2019-09-09T03:16:19Z",
     "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/deep-reinforcement-learning/brachistochrone/README.md",
-    "tags": ["All", "brachistochrone curve", "reinforcement learning", "physics", "calculus of variations", "optimization"]
+    "tags": ["All", "gym","brachistochrone curve", "reinforcement learning", "physics", "calculus of variations", "optimization"]
   },
   {
     "repo": "computer-vision-cpp-python",
