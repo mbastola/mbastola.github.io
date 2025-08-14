@@ -1,0 +1,462 @@
+[
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "diffusion",
+    "category":["nn","cv"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/advanced-concepts/diffusion",
+    "img": "./site/images/repos/unetdiffusion.png",
+    "updated": "2024-09-20T12:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/advanced-concepts/diffusion/README.md",
+    "tags": ["All","machine learning","diffusion","mnist","autoencoders","generative models","physics-inspired","pytorch","attention","unet"]
+  },
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "benchmarks-nn-frameworks",
+    "category":["nn"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/advanced-concepts/benchmarks-nn-frameworks",
+    "img": "./site/images/repos/jaxvtorvten.jpg",
+    "updated": "2024-07-05T12:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/advanced-concepts/benchmarks-nn-frameworks/README.md",
+    "tags": ["All","machine learning","JAX","mnist","benchmarks","frameworks","keras","pytorch","tensorflow","pynvml","gpu"]
+  },
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "vision-transformers",
+    "category":["nn","cv"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/advanced-concepts/vision-transformers",
+    "img": "./site/images/repos/vit.png",
+    "updated": "2024-05-30T04:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/advanced-concepts/vision-transformers/README.md",
+    "tags": ["All","attention","transformer","vit","machine learning","vision transformer","cifar100","transfer learning","pytorch"]
+  },
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "machine-translation",
+    "category":["nn"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/advanced-concepts/machine-translation",
+    "img": "./site/images/repos/indoeuro.jpg",
+    "updated": "2024-03-30T04:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/advanced-concepts/machine-translation/README.md",
+    "tags": ["All","attention","transformer","devnagari","machine learning","autogregression","nlp","language models","seq2seq","huggingface","pytorch"]
+  },
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "attention",
+    "category":["nn"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/advanced-concepts/attention",
+    "img": "./site/images/repos/multi_attn.png",
+    "updated": "2023-10-26T04:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/advanced-concepts/attention/README.md",
+    "tags": ["All","attention","transformer","machine learning","autogregression","nlp","language models","seq2seq","huggingface","pytorch"]
+  },
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "LSTMs & Chaotic Dynamics",
+    "category":["nn","ai4s"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/deep-neural-nets/lstm",
+    "img": "./site/images/repos/lstm.jpg",
+    "updated": "2021-06-23T04:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/deep-neural-nets/lstm/README.md",
+    "tags": ["All","rnn","chaos","lorenz attractor","machine learning","ARIMA","Autocorrelation","Fibonacci","Fourier Transforms","Kalman Filter","Logistic Map","Lyapunov Exponents","Non-Linear Dynamics","Time Series","keras"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "A-star (A*) search",
+    "category":["rl"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Reinforcement-Learning/a-star",
+    "img": "./site/images/repos/a_star.png",
+    "updated": "2019-03-11T04:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/Reinforcement-Learning/a-star/README.md",
+    "tags": ["All","RL","matplotlib","numpy","a-star search","python","dfs","bfs","breadth-first search","depth-first search","tree search", "maze-solver", "heuristics"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "Minimax",
+    "category":["rl"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Reinforcement-Learning/min-max",
+    "img": "./site/images/repos/minimax.png",
+    "updated": "2019-03-20T04:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/Reinforcement-Learning/min-max/README.md",
+    "tags": ["All","RL","minimax","chess","matplotlib","numpy","alpha-beta pruning","pandas","python","perfect knowledge","zero-sum"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "Expectimax",
+    "category":["rl"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Reinforcement-Learning/expectimax",
+    "img": "./site/images/repos/expectimax.webp",
+    "updated": "2019-04-01T04:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/Reinforcement-Learning/expectimax/README.md",
+    "tags": ["All","RL","expectimax","chess","matplotlib","numpy","alpha-beta pruning","pandas","python","imperfect knowledge","zero-sum"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "Markov-Decision-Processes",
+    "category":["rl"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Reinforcement-Learning/mdp",
+    "img": "./site/images/repos/mdp.webp",
+    "updated": "2019-06-11T04:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/Reinforcement-Learning/mdp/README.md",
+    "tags": ["All","bayesian bandits","datascience","epsilon greedy","Machine Learning","matplotlib","numpy","optimistic iv","pandas","python","statistics","thompson sampling","ucb1"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "Monte-Carlo",
+    "category":["rl"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Reinforcement-Learning/monte-carlo",
+    "img": "./site/images/repos/monte_carlo.png",
+    "updated": "2019-07-12T04:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/Reinforcement-Learning/monte-carlo/README.md",
+    "tags": ["All","bayesian bandits","datascience","epsilon greedy","Machine Learning","matplotlib","numpy","optimistic iv","pandas","python","statistics","thompson sampling","ucb1"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "Q-learning",
+    "category":["rl"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Reinforcement-Learning/q-learning",
+    "img": "./site/images/repos/q-learn.png",
+    "updated": "2019-08-23T04:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/Reinforcement-Learning/q-learning/README.md",
+    "tags": ["All","bayesian bandits","datascience","epsilon greedy","Machine Learning","matplotlib","numpy","optimistic iv","pandas","python","statistics","thompson sampling","ucb1"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "Hypothesis-Testing-III-Bayesian-Methods",
+    "category":["ml"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Hypothesis-Testing-III-Bayesian-Methods",
+    "img": "./site/images/repos/slots1.jpg",
+    "updated": "2019-01-20T04:41:02Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/Hypothesis-Testing-III-Bayesian-Methods/README.md",
+    "tags": ["All","bayesian bandits","datascience","epsilon greedy","Machine Learning","matplotlib","numpy","optimistic iv","pandas","python","statistics","thompson sampling","ucb1"]
+  },
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "cnn-advanced-architecture-3D",
+    "category":["nn","cv"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/convolutional-neural-nets/cnn-advanced-architecture-3D",
+    "img": "./site/images/repos/conv4.jpg",
+    "updated": "2021-02-18T19:37:52Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/convolutional-neural-nets/cnn-advanced-architecture-3D/README.md",
+    "tags": ["All", "tensforflow","cnn", "3d cnn", "computer vision", "deep learning", "ResNet", "3D convolution"]
+  },
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "cnn-advanced-architecture",
+    "category":["nn","cv"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/convolutional-neural-nets/cnn-advanced-architecture",
+    "img": "./site/images/repos/cnn3.jpeg",
+    "updated": "2021-01-05T19:37:52Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/convolutional-neural-nets/cnn-advanced-architecture/README.md",
+    "tags": ["All", "tensorflow","cnn", "computer vision", "deep learning", "ResNet", "Inception", "VGG", "AlexNet"]
+  },
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "cnn-learning-hyper-params",
+    "category":["nn","cv"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/convolutional-neural-nets/cnn-learning-hyper-params",
+    "img": "./site/images/repos/hyperparam.png",
+    "updated": "2020-12-14T19:37:52Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/convolutional-neural-nets/cnn-learning-hyper-params/README.md",
+    "tags": ["All", "tensorflow","cnn", "hyperparameter tuning", "learning rate", "optimization", "grid search", "random search"]
+  },
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "cnn-tensorflow",
+    "category":["nn","cv"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/convolutional-neural-nets/cnn-tensorflow",
+    "img": "./site/images/repos/cnn1.jpeg",
+    "updated": "2020-06-11T19:37:52Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/convolutional-neural-nets/cnn-tensorflow/README.md",
+    "tags": ["All", "cnn", "tensorflow", "keras", "neural networks", "computer vision", "deep learning"]
+  },
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "neural_style_transfer",
+    "category":["nn","cv"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/convolutional-neural-nets/neural_style_transfer",
+    "img": "./site/images/repos/nst.png",
+    "updated": "2020-11-14T19:37:52Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/convolutional-neural-nets/neural_style_transfer/README.md",
+    "tags": ["All", "keras","neural style transfer", "nst", "cnn", "computer vision", "generative models", "tensorflow", "VGG"]
+  },
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "ann-tensorflow",
+    "category":["nn"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/deep-neural-nets/ann-tensorflow",
+    "img": "./site/images/repos/deep2.png",
+    "updated": "2020-05-12T19:33:23Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/deep-neural-nets/ann-tensorflow/README.md",
+    "tags": ["All", "tensorflow","ann", "artificial neural network", "tensorflow", "keras", "deep learning"]
+  },
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "ann-numpy",
+    "category":["nn"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/deep-neural-nets/ann-numpy",
+    "img": "./site/images/repos/deep.png",
+    "updated": "2020-01-24T19:33:23Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/deep-neural-nets/ann-numpy/README.md",
+    "tags": ["All", "ann", "artificial neural network", "numpy", "python", "from scratch", "deep learning"]
+  },
+  {
+    "repo": "computer-vision-cpp-python",
+    "folder": "Eigen_faces",
+    "category":["cv"],
+    "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/courseworks-non-opencv/Eigen_faces",
+    "img": "./site/images/repos/eigenf.jpg",
+    "updated": "2016-12-01T01:23:43Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/computer-vision-cpp-python/master/courseworks-non-opencv/Eigen_faces/README.md",
+    "tags": ["All", "eigenfaces", "face recognition", "computer vision", "pca", "principal component analysis", "c++"]
+  },
+  {
+    "repo": "computer-vision-cpp-python",
+    "folder": "Features_Detection_And_Matching",
+    "category":["cv"],
+    "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/courseworks-non-opencv/Features_Detection_And_Matching",
+    "img": "./site/images/repos/houghp.png",
+    "updated": "2016-09-14T01:23:43Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/computer-vision-cpp-python/master/courseworks-non-opencv/Features_Detection_And_Matching/README.md",
+    "tags": ["All", "feature detection", "feature matching", "computer vision", "harris corner", "hough transform"]
+  },
+  {
+    "repo": "computer-vision-cpp-python",
+    "folder": "Panorama",
+    "category":["cv"],
+    "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/courseworks-non-opencv/Panorama",
+    "img": "./site/images/repos/yosemite.jpg",
+    "updated": "2016-11-24T01:23:43Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/computer-vision-cpp-python/master/courseworks-non-opencv/Panorama/README.md",
+    "tags": ["All", "panorama", "image stitching", "homography", "ransac", "feature matching", "computer vision"]
+  },
+  {
+    "repo": "computer-vision-cpp-python",
+    "folder": "features-matching",
+    "category":["cv"],
+    "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/features-matching",
+    "img": "./site/images/repos/homography3.png",
+    "updated": "2017-10-02T01:23:43Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/computer-vision-cpp-python/master/features-matching/README.md",
+    "tags": ["All", "feature matching", "homography", "ransac", "sift", "computer vision"]
+  },
+  {
+    "repo": "computer-vision-cpp-python",
+    "folder": "image-restoration",
+    "category":["cv"],
+    "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/image-restoration",
+    "img": "./site/images/repos/restore.jpg",
+    "updated": "2018-09-04T01:23:43Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/computer-vision-cpp-python/master/image-restoration/README.md",
+    "tags": ["All", "image restoration", "denoising", "inpainting", "computer vision", "median filter", "gaussian filter"]
+  },
+  {
+    "repo": "computer-vision-cpp-python",
+    "folder": "motion-tracking",
+    "category":["cv"],
+    "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/motion-tracking",
+    "img": "./site/images/repos/optical.png",
+    "updated": "2018-12-02T01:23:43Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/computer-vision-cpp-python/master/motion-tracking/README.md",
+    "tags": ["All", "motion tracking", "optical flow", "lucas-kanade", "object tracking", "computer vision"]
+  },
+  {
+    "repo": "computer-vision-cpp-python",
+    "folder": "panorama-opencv",
+    "category":["cv"],
+    "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/panorama-opencv",
+    "img": "./site/images/repos/epipolar.png",
+    "updated": "2018-11-14T01:23:43Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/computer-vision-cpp-python/master/panorama-opencv/README.md",
+    "tags": ["All", "panorama", "image stitching", "opencv", "computer vision", "feature matching", "epipolar geometry"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "Linear-Regression",
+    "category":["ml"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Linear-Regression",
+    "img": "./site/images/repos/math.jpg",
+    "updated": "2018-04-14T03:13:32Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/Linear-Regression/README.md",
+    "tags": ["All","datascience","Machine Learning","statistics","matplotlib","pandas","python","sklearn","supervised learning"]
+  },
+  {
+    "repo": "computer-vision-cpp-python",
+    "folder": "object-detection-ssd-opencv",
+    "category":["cv"],
+    "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/object-detection-ssd-opencv",
+    "img": "./site/images/repos/ssd.png",
+    "updated": "2018-09-20T02:43:21Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/computer-vision-cpp-python/master/object-detection-ssd-opencv/README.md",
+    "tags": ["All", "object detection", "ssd", "single shot detector", "opencv", "deep learning", "computer vision"]
+  },
+  {
+    "repo": "neural-nets-in-python",
+    "folder": "Brachistochrone",
+    "category":["rl","nn","ai4s"],
+    "url": "https://github.com/mbastola/neural-nets-in-python/tree/master/deep-reinforcement-learning/brachistochrone",
+    "img": "./site/images/repos/brach.jpg",
+    "updated": "2021-04-09T03:16:19Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/neural-nets-in-python/master/deep-reinforcement-learning/brachistochrone/README.md",
+    "tags": ["All", "gym","brachistochrone curve", "reinforcement learning", "physics", "calculus of variations", "optimization"]
+  },
+  {
+    "repo": "computer-vision-cpp-python",
+    "folder": "multi_view_structure_sfm",
+    "category":["3d","cv"],
+    "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/multi_view_structure_sfm",
+    "img": "./site/images/repos/mvs.png",
+    "updated": "2019-10-28T17:01:00Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/computer-vision-cpp-python/master/multi_view_structure_sfm/README.md",
+    "tags": ["All", "structure from motion", "sfm", "3d reconstruction", "multi-view geometry", "computer vision", "bundle adjustment"]
+  },
+  {
+    "repo": "computer-vision-cpp-python",
+    "folder": "multi_view_structure_sfm2",
+    "category":["3d","cv"],
+    "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/multi_view_structure_sfm2",
+    "img": "./site/images/repos/mvs3.png",
+    "updated": "2019-11-21T17:01:00Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/computer-vision-cpp-python/master/multi_view_structure_sfm2/README.md",
+    "tags": ["All", "structure from motion", "sfm", "3d reconstruction", "multi-view geometry", "computer vision", "point cloud"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "Gaussian-Mixture-Models",
+    "category":["ml"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Gaussian-Mixture-Models",
+    "img": "./site/images/repos/gmm_ml.jpg",
+    "updated": "2018-09-16T13:12:00Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/Gaussian-Mixture-Models/README.md",
+    "tags": ["All","clustering","expectation maximization","gaussian mixtures","generative models","kmeans","numpy","pandas","sklearn","unsupervised learning"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "Hypothesis-Testing",
+    "category":["ml"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Hypothesis-Testing",
+    "img": "./site/images/repos/hypothesis1.jpeg",
+    "updated": "2018-08-20T19:22:19Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/Hypothesis-Testing/README.md",
+    "tags": ["All", "hypothesis testing", "statistics", "p-value", "t-test", "chi-squared test", "data science"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "Hypothesis-Testing-II-Gaussian-Mixtures",
+    "category":["ml"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Hypothesis-Testing-II-Gaussian-Mixtures",
+    "img": "./site/images/repos/finitemixturefitted.png",
+    "updated": "2019-01-08T20:40:19Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/Hypothesis-Testing-II-Gaussian-Mixtures/README.md",
+    "tags": ["All", "hypothesis testing", "statistics", "gaussian mixture model", "gmm", "expectation maximization"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "K-Means",
+    "category":["ml"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/K-Means",
+    "img": "./site/images/repos/kmeans-featured.png",
+    "updated": "2018-08-20T19:19:19Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/K-Means/README.md",
+    "tags": ["All","clustering","datascience","kmeans","Machine Learning","matplotlib","nolnparametric methods", "pandas","python","sklearn","unsupervised learning"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "KNN",
+    "category":["ml"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/KNN",
+    "img": "./site/images/repos/knn.jpg",
+    "updated": "2018-05-05T19:19:19Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/tree/master/KNN/README.md",
+    "tags": ["All", "datascience","Machine Learning","nonparametric methods","statistics","matplotlib","pandas","python","sklearn","supervised learning"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "Logistic-Regression",
+    "category":["ml"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Logistic-Regression",
+    "img": "./site/images/repos/logit.png",
+    "updated": "2018-04-20T19:19:19Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/Logistic-Regression/README.md",
+    "tags": ["All", "datascience","Machine Learning","statistics","matplotlib","pandas","python","sklearn","supervised learning"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "NLP",
+    "category":["ml"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/NLP",
+    "img": "./site/images/repos/nlp.png",
+    "updated": "2018-05-11T19:19:19Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/NLP/README.md",
+    "tags": ["All","datascience","Machine Learning","matplotlib","naive bayes","nlp","pandas","python","random forest","semi-supervised learning","sklearn","tf-idf"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "facial-expressions",
+    "category":["ml","cv"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/SVM/facial-expressions",
+    "img": "./site/images/repos/support.jpeg",
+    "updated": "2018-05-20T19:19:19Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/SVM/facial-expressions/README.md",
+    "tags": ["All", "datascience","Dimensionality Reduction","Principle Component Analysis","Machine Learning","nonparametric methods","statistics","matplotlib","pandas","python","sklearn","supervised learning"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "SVM",
+    "category":["ml"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/SVM/iris-dataset",
+    "img": "./site/images/repos/svm2.png",
+    "updated": "2018-05-08T19:19:19Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/SVM/iris-dataset/README.md",
+    "tags": ["All", "support vectors","datascience","Machine Learning","nonparametric methods","statistics","matplotlib","pandas","python","sklearn","supervised learning"]
+  },
+  {
+    "repo": "machine-learning-in-python",
+    "folder": "Trees",
+    "category":["ml"],
+    "url": "https://github.com/mbastola/machine-learning-in-python/tree/master/Trees",
+    "img": "./site/images/repos/forest.jpg",
+    "updated": "2018-04-22T19:19:19Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/machine-learning-in-python/master/Trees/README.md",
+    "tags": ["All", "datascience","Machine Learning","decision trees","statistics","matplotlib","pandas","python","sklearn","supervised learning"]
+  },
+  {
+    "repo": "computer-vision-cpp-python",
+    "folder": "two-view-geometry2",
+    "category":["3d","cv"],
+    "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/two-view-geometry2",
+    "img": "./site/images/repos/two_view2.png",
+    "updated": "2019-09-01T10:25:00Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/computer-vision-cpp-python/master/two-view-geometry2/README.md",
+    "tags": ["All", "two-view geometry", "epipolar geometry", "essential matrix", "fundamental matrix", "computer vision", "3d reconstruction"]
+  },
+  {
+    "repo": "computer-vision-cpp-python",
+    "folder": "two-view-geometry",
+    "category":["3d","cv"],
+    "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/two-view-geometry",
+    "img": "./site/images/repos/two_view.png",
+    "updated": "2019-08-04T11:20:00Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/computer-vision-cpp-python/master/two-view-geometry/README.md",
+    "tags": ["All", "two-view geometry", "epipolar geometry", "essential matrix", "fundamental matrix", "computer vision", "ransac"]
+  },
+  {
+    "repo": "computer-vision-cpp-python",
+    "folder": "camera-calibration",
+    "category": ["3d","cv"],
+    "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/camera-calibration",
+    "img": "./site/images/repos/calib.jpeg",
+    "updated": "2019-06-21T13:12:00Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/computer-vision-cpp-python/master/camera-calibration/README.md",
+    "tags": ["All", "camera calibration", "computer vision", "3d", "camera intrinsics", "checkerboard pattern", "zhangs method"]
+  },
+  {
+    "repo": "computer-vision-cpp-python",
+    "category":["3d","cv"],
+    "folder": "camera-calibration2",
+    "url": "https://github.com/mbastola/computer-vision-cpp-python/tree/master/camera-calibration2",
+    "img": "./site/images/repos/calib.png",
+    "updated": "2019-06-29T13:12:00Z",
+    "readme_url": "https://raw.githubusercontent.com/mbastola/computer-vision-cpp-python/master/camera-calibration2/README.md",
+    "tags": ["All", "camera calibration", "computer vision", "3d", "camera matrix", "projection matrix", "opencv"]
+  }
+]
