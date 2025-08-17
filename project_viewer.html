@@ -319,6 +319,17 @@
 
               // Custom renderer for marked.js to handle image paths
               const renderer = new marked.Renderer();
+              renderer.link = (href, title, text) => {
+                text = href.text
+                href = href.href
+                // Open absolute links in a new tab for a better user experience.
+                if (href && (href.startsWith('http') || href.startsWith('//'))) {
+                  return `<a href="${href}" title="${title || ''}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+                }
+                // Return default for relative links.
+                return `<a href="${href}" title="${title || ''}">${text}</a>`;
+              };
+
               const imageBaseUrl = readmeUrl.substring(0, readmeUrl.lastIndexOf('/') + 1);
               renderer.image = (href, title, text) => {
                 // Defensive check: if href is not a string (e.g., from malformed markdown ![alt]()),
