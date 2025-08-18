@@ -16,6 +16,35 @@
       font-family: 'Helvetica Neue', sans-serif;
       background-color: #fff;
     }
+    /* Loader styles */
+    #loader-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .spinner {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #0077cc;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1.5s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    /* Hide content until fully loaded to prevent flash of partial content */
+    .viewer-header, .scroll-container, .viewer-footer {
+      visibility: hidden;
+    }
     body {
       display: flex;
       flex-direction: column;
@@ -149,10 +178,14 @@
   </style>
 </head>
 <body>
+  <div id="loader-overlay">
+    <div class="spinner"></div>
+  </div>
   <header class="viewer-header">
     <h1 id="project-title">Project Viewer</h1>
     <a id="back-to-portfolio" href="index.html">← Back to Main Page</a>
   </header>
+
   <div class="scroll-container">
     <div id="project-image-container"></div>
     <main id="main-content"></main>
@@ -163,6 +196,7 @@
       </div>
     </section>
   </div>
+
   <footer class="viewer-footer">
     <div id="tag-list"></div>
     <p>Viewing content from <a id="external-url" href="#" target="_blank" rel="noopener noreferrer">external source</a></p>
@@ -259,6 +293,17 @@
         }
     }
 
+    function hideLoaderAndShowContent() {
+      const loader = document.getElementById('loader-overlay');
+      if (loader) {
+        loader.style.display = 'none';
+      }
+      // Make the main content visible
+      document.querySelector('.viewer-header').style.visibility = 'visible';
+      document.querySelector('.scroll-container').style.visibility = 'visible';
+      document.querySelector('.viewer-footer').style.visibility = 'visible';
+    }
+
     window.addEventListener('DOMContentLoaded', async () => {
       const params = new URLSearchParams(window.location.search);
       const projectIndex = params.get('index');
@@ -267,6 +312,7 @@
 
       if (projectIndex === null) {
         mainContent.innerHTML = `<p style="text-align:center; padding: 2rem; color: red;">Error: No project specified.</p>`;
+        hideLoaderAndShowContent();
         return;
       }
 
@@ -299,7 +345,6 @@
         externalLink.textContent = `${temp}/mbastola`;
         
         if (readmeUrl) {
-            mainContent.innerHTML = '<p style="text-align:center; padding: 2rem;">Loading README...</p>';
             try {
               const response = await fetch(readmeUrl);
               if (!response.ok) throw new Error(`Failed to fetch README. Status: ${response.status}`);
@@ -420,6 +465,7 @@
                 const height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
                 iframe.style.height = `${height}px`;
                 renderFooterContent(project, allProjectsWithIndex);
+                hideLoaderAndShowContent();
               };
 
               mainContent.innerHTML = ''; // Clear loading message
@@ -428,13 +474,17 @@
                 console.error('Error loading README.', error);
                 mainContent.innerHTML = `<p style="text-align:center; padding: 2rem; color: red;">Could not load README. <a href="${projectUrl}" target="_blank" rel="noopener noreferrer">View on GitHub</a></p>`;
                 renderFooterContent(project, allProjectsWithIndex);
+                hideLoaderAndShowContent();
             }
         } else {
             const iframe = document.createElement('iframe');
             iframe.id = 'project-frame';
             iframe.title = 'Project Content';
             iframe.src = projectUrl;
-            iframe.onload = () => renderFooterContent(project, allProjectsWithIndex);
+            iframe.onload = () => {
+              renderFooterContent(project, allProjectsWithIndex);
+              hideLoaderAndShowContent();
+            };
             mainContent.appendChild(iframe);
         }
         
@@ -452,6 +502,7 @@
       } catch (error) {
         console.error('Error loading project data:', error);
         mainContent.innerHTML = `<p style="text-align:center; padding: 2rem; color: red;">Could not load project. ${error.message}</p>`;
+        hideLoaderAndShowContent();
       }
     });
   </script>
