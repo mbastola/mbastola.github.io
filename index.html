@@ -343,10 +343,11 @@
 
     function populateTags() {
       const tagList = document.getElementById("tag-list");
-      Object.keys(tagIndex).sort().forEach(tag => {
+      const sortedTags = Object.keys(tagIndex).sort((a, b) => tagIndex[b].length - tagIndex[a].length);
+      sortedTags.forEach(tag => {
         const tagEl = document.createElement("span");
         tagEl.className = "tag";
-        tagEl.textContent = toTitleCase(tag);
+        tagEl.textContent = `${toTitleCase(tag)} (${tagIndex[tag].length})`;
         tagEl.onclick = () => {
           document.getElementById("repo-grid").innerHTML = "";
           visibleCount = 0;
@@ -386,7 +387,6 @@
         const projectIndex = proj.originalIndex;
         const viewerUrl = `project_viewer.html?index=${projectIndex}`;
         content.href = viewerUrl;
-        content.target = "_blank";
 
         content.appendChild(img);
         wrapper.appendChild(title);

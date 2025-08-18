@@ -52,8 +52,9 @@
       height: 450px;
       object-fit: contain; 
       display: block;
-      margin: 20px;
+      margin: 0;
       background-color: #fff;
+      max-height: 25em;
     }
     iframe {
       flex: 1;
@@ -77,6 +78,8 @@
       text-align: center;
       border-top: 1px solid #e0e0e0;
       font-size: 0.9rem;
+      max-height: 8em;
+      overflow-y: auto;
     }
     .scroll-container {
       flex: 1;
@@ -210,7 +213,6 @@
           contentLink.className = "card-content";
           const viewerUrl = `project_viewer.html?index=${proj.originalIndex}`;
           contentLink.href = viewerUrl;
-          contentLink.target = "_blank";
 
           const img = document.createElement("img");
           img.src = proj.img;
@@ -319,6 +321,7 @@
 
               // Custom renderer for marked.js to handle image paths
               const renderer = new marked.Renderer();
+
               renderer.link = (href, title, text) => {
                 text = href.text
                 href = href.href
@@ -329,6 +332,7 @@
                 // Return default for relative links.
                 return `<a href="${href}" title="${title || ''}">${text}</a>`;
               };
+
 
               const imageBaseUrl = readmeUrl.substring(0, readmeUrl.lastIndexOf('/') + 1);
               renderer.image = (href, title, text) => {
@@ -350,6 +354,7 @@
 
               const bodyContent = marked.parse(markdown, { renderer });
 
+
               const iframeHtml = `
                 <!DOCTYPE html>
                 <html lang="en">
@@ -358,6 +363,7 @@
                   <meta name="viewport" content="width=device-width, initial-scale=1.0">
                   <title>README Content</title>
                   <link rel="stylesheet" href="${themeStyleUrl}">
+                  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0KOVEMckDpbOc7ymOFAuVmMfxQJoF2v5E0IeQC2OKZLSsGb9NlqO3" crossorigin="anonymous">
                   <style>
                     body { 
                       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
@@ -376,12 +382,27 @@
                     table { border-collapse: collapse; width: 100%; }
                     th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
                     th { background-color: #f2f2f2; }
+                    .katex { font-size: 1.1em; }
                   </style>
                 </head>
                 <body>
                   ${bodyContent}
                   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"><\/script>
-                  <script>hljs.highlightAll();<\/script>
+                  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"><\/script>
+                  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"><\/script>
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                      hljs.highlightAll();
+                      renderMathInElement(document.body, {
+                        delimiters: [
+                          {left: '$$', right: '$$', display: true},
+                          {left: '$', right: '$', display: false},
+                          {left: '\\\\(', right: '\\\\)', display: false},
+                          {left: '\\\\[', right: '\\\\]', display: true}
+                        ]
+                      });
+                    });
+                  <\/script>
                 </body>
                 </html>
               `;
