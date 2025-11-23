@@ -578,7 +578,20 @@
           return `<img src="${fullUrl}" alt="${href}" ${title ? `title="${title}"` : ''}>`;
         };
 
-        const bodyContent = marked.parse(markdown, { renderer });
+        // Protect LaTeX blocks from marked.js
+        const mathBlocks = [];
+        let tempMarkdown = markdown.replace(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/g, (match) => {
+            mathBlocks.push(match);
+            return `%%MATH_BLOCK_${mathBlocks.length - 1}%%`;
+        });
+
+        let bodyContent = marked.parse(tempMarkdown, { renderer });
+
+        // Restore LaTeX blocks
+        bodyContent = bodyContent.replace(/%%MATH_BLOCK_(\d+)%%/g, (match, index) => {
+            return mathBlocks[parseInt(index, 10)];
+        });
+
 
         const iframeHtml = `
           <!DOCTYPE html>
