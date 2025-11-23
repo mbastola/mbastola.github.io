@@ -610,6 +610,7 @@
               th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
               th { background-color: #f2f2f2; }
               .katex { font-size: 1.1em; }
+              span.katex-html { display: none !important; }
             </style>
             ${isDarkMode ? `
             <style>
@@ -629,8 +630,8 @@
                 hljs.highlightAll();
                 renderMathInElement(document.body, {
                   delimiters: [
-                    {left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false},
-                    {left: '\\\\(', right: '\\\\)', display: false}, {left: '\\\\[', right: '\\\\]', display: true}
+                    {left: '$$', right: '$$', display: true, remove: true} , {left: '$', right: '$', display: false, remove: true},
+                    {left: '\\\\(', right: '\\\\)', display: false, remove: true}, {left: '\\\\[', right: '\\\\]', display: true, remove: true}
                   ]
                 });
               });
