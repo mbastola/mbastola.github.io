@@ -418,7 +418,11 @@
                 const isNowDark = currentTheme === 'dark';
                 body.style.backgroundColor = isNowDark ? '#282c34' : '#fff';
                 body.style.color = isNowDark ? '#abb2bf' : '#24292e';
-                // You could also update the highlight.js theme link if needed
+                
+                const links = iframe.contentWindow.document.getElementsByTagName('a');
+                for (let i = 0; i < links.length; i++) {
+                    links[i].style.color = isNowDark ? '#ffc107' : '#0056b3';
+                }
             }
         });
     }
@@ -547,6 +551,8 @@
                       margin: 0 auto;
                       box-sizing: border-box;
                     }
+                    a { color: ${isDarkMode ? '#ffc107' : '#0056b3'}; text-decoration: none; }
+                    a:hover { text-decoration: underline; }
                     h1, h2, h3 { border-bottom: 1px solid ${isDarkMode ? '#444' : '#eee'}; padding-bottom: 0.3em; }
                     pre > code { border-radius: 5px; }
                     code:not(pre > code) { font-family: monospace; background-color: #f0f0f0; padding: 0.2em 0.4em; border-radius: 3px; }
