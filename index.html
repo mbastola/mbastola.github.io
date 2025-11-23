@@ -15,10 +15,9 @@
       flex-direction: column;
     }
     body.dark-mode {
-        background-color: #121212;
+        background-color: #292727;
         color: #e0e0e0;
     }
-
 
     header.hero {
       background-image: url('./site/images/header.jpg');
@@ -29,21 +28,19 @@
       color: #fff;
     }
     .theme-toggle-button {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        color: white;
+        position: relative;
+        top: 0;
+        left: 10px; /* (50% of container) - (half of pic width) - (half of button width) */
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        color: #333;
         padding: 0.5rem;
         border-radius: 50%;
         cursor: pointer;
         font-size: 1.2rem;
         width: 40px;
         height: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         z-index: 1000;
     }
 
@@ -334,16 +331,13 @@
 </head>
 <body>
   <header class="hero">
-      <button id="theme-toggle" class="theme-toggle-button">
-          <i class="fas fa-sun"></i>
-      </button>
   </header>
 
   <div class="profile-container">
     <img class="profile-pic" src="./site/images/prof.jpg" alt="Profile Picture"/>
     <div class="contact-line">
       💼 <a href="https://www.linkedin.com/in/mbastola" target="_blank" rel="noopener noreferrer">linkedin.com/in/mbastola</a> &nbsp;&nbsp;&nbsp; ☕️ <a href="https://github.com/mbastola" target="_blank" rel="noopener noreferrer">github.com/mbastola</a>  <br/><br/>
-      📍 Chicago, IL &nbsp;&nbsp;&nbsp; 📍🛫 Kathmandu, Nepal <br/>
+      📍 Chicago, IL &nbsp;&nbsp;&nbsp; 📍🛫 Kathmandu, Nepal
     </div>
     <div id="bio">
       <p>
@@ -369,6 +363,9 @@
           <button class="filter-btn" data-filter="3d">3D</button>
           <button class="filter-btn" data-filter="rl">Reinforcement Learning</button>
           <button class="filter-btn" data-filter="ml">Classical ML</button>
+          <button id="theme-toggle" class="theme-toggle-button">
+              <i class="fas fa-sun"></i>
+          </button><br/>     
           <!--button class="filter-btn" data-filter="ai4s">AI4Science</button>
           <button class="filter-btn" data-filter="genai">Gen AI</button-->
           </nav>
