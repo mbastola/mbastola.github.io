@@ -406,24 +406,9 @@
             localStorage.setItem('theme', currentTheme);
             backLink.href = `index.html?theme=${currentTheme}`; // Update back link
             themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-
-            // Reload the iframe to apply the new theme to its content
-            const iframe = document.getElementById('project-frame');
-            if (iframe && iframe.srcdoc) {
-                const url = new URL(window.location);
-                url.searchParams.set('theme', currentTheme);
-                window.history.pushState({ path: url.href }, '', url.href); // Update URL without reload
-                // Re-render the iframe content with the new theme
-                const body = iframe.contentWindow.document.body;
-                const isNowDark = currentTheme === 'dark';
-                body.style.backgroundColor = isNowDark ? '#282c34' : '#fff';
-                body.style.color = isNowDark ? '#abb2bf' : '#24292e';
-                
-                const links = iframe.contentWindow.document.getElementsByTagName('a');
-                for (let i = 0; i < links.length; i++) {
-                    links[i].style.color = isNowDark ? '#ffc107' : '#0056b3';
-                }
-            }
+            
+            // Re-render the iframe with the new theme
+            updateIframeTheme(currentTheme);
         });
     }
 
@@ -432,6 +417,10 @@
         // Default to dark mode between 6 PM (18:00) and 6 AM (06:00)
         return (hour >= 18 || hour < 6) ? 'dark' : 'light';
     }
+
+    // Store original markdown to avoid re-fetching
+    let originalMarkdown = '';
+    let currentProjectData = null;
 
     window.addEventListener('DOMContentLoaded', async () => {
       const params = new URLSearchParams(window.location.search);
@@ -453,7 +442,8 @@
         const projects = await res.json();
         const allProjectsWithIndex = projects.map((p, i) => ({...p, originalIndex: i}));
         const project = allProjectsWithIndex[projectIndex];
-
+        currentProjectData = project; // Store for later use
+        
         if (!project) {
             throw new Error(`Project with index ${projectIndex} not found.`);
         }
@@ -479,150 +469,28 @@
             try {
               const response = await fetch(readmeUrl);
               if (!response.ok) throw new Error(`Failed to fetch README. Status: ${response.status}`);
-              let markdown = await response.text();
-
-              // To handle raw HTML <img> tags in READMEs, we must convert GitHub blob URLs
-              // to raw content URLs before parsing the markdown.
-              markdown = markdown.replace(
-                /src="https:\/\/github\.com\/(.*?)\/blob\/(.*?)"/g,
-                'src="https://raw.githubusercontent.com/$1/$2"'
-              );
-
-              const isDarkMode = themeFromUrl === 'dark';
-              const themeStyleUrl = isDarkMode
-                ? 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css'
-                : 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-light.min.css';
-              const bodyBgColor = isDarkMode ? '#282c34' : '#fff';
-              const bodyColor = isDarkMode ? '#abb2bf' : '#24292e';
-
-              // Custom renderer for marked.js to handle image paths
-              const renderer = new marked.Renderer();
-
-              renderer.link = (href, title, text) => {
-                text = href.text
-                href = href.href
-                // Open absolute links in a new tab for a better user experience.
-                if (href && (href.startsWith('http') || href.startsWith('//'))) {
-                  return `<a href="${href}" title="${title || ''}" target="_blank" rel="noopener noreferrer">${text}</a>`;
-                }
-                // Return default for relative links.
-                return `<a href="${href}" title="${title || ''}">${text}</a>`;
-              };
-
-
-              const imageBaseUrl = readmeUrl.substring(0, readmeUrl.lastIndexOf('/') + 1);
-              renderer.image = (href, title, text) => {
-                // Defensive check: if href is not a string (e.g., from malformed markdown ![alt]()),
-                // return the alt text or an empty string to prevent errors.
-                href = href.href
-                if (typeof href !== 'string') {
-                  return text || '';
-                 }
-                // Don't modify absolute URLs (http, https, or data URIs)
-                if (href.startsWith('http') || href.startsWith('data:')) {
-                  href = href.split(`${projectTitle}/`)[1]
-                  //return `<img src="${href}" alt="${text}" ${title ? `title="${title}"` : ''}>`;
-                }
-                // Prepend the base URL for raw content to relative image paths
-                const fullUrl = new URL(href, imageBaseUrl).href;
-                return `<img src="${fullUrl}" alt="${href}" ${title ? `title="${title}"` : ''}>`;
-              };
-
-              const bodyContent = marked.parse(markdown, { renderer });
-
-
-              const iframeHtml = `
-                <!DOCTYPE html>
-                <html lang="en">
-                <head>
-                  <meta charset="UTF-8">
-                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                  <title>README Content</title>
-                  <link rel="stylesheet" href="${themeStyleUrl}">
-                  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0KOVEMckDpbOc7ymOFAuVmMfxQJoF2v5E0IeQC2OKZLSsGb9NlqO3" crossorigin="anonymous">
-                  <style>
-                    body { 
-                      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-                      line-height: 1.6;
-                      padding: 2rem 4rem;
-                      background-color: ${bodyBgColor};
-                      color: ${bodyColor};
-                      max-width: 900px;
-                      margin: 0 auto;
-                      box-sizing: border-box;
-                    }
-                    a { color: ${isDarkMode ? '#ffc107' : '#0056b3'}; text-decoration: none; }
-                    a:hover { text-decoration: underline; }
-                    h1, h2, h3 { border-bottom: 1px solid ${isDarkMode ? '#444' : '#eee'}; padding-bottom: 0.3em; }
-                    pre > code { border-radius: 5px; }
-                    code:not(pre > code) { font-family: monospace; background-color: ${isDarkMode ? '#444' : '#f0f0f0'}; color: ${isDarkMode ? '#e0e0e0' : '#24292e'}; padding: 0.2em 0.4em; border-radius: 3px; }
-                    img { max-width: 100%; height: auto; }
-                    table { border-collapse: collapse; width: 100%; }
-                    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-                    th { background-color: #f2f2f2; }
-                    .katex { font-size: 1.1em; }
-                  </style>
-                  ${isDarkMode ? `
-                  <style>
-                    /* For Firefox */
-                    html {
-                      scrollbar-width: thin;
-                      scrollbar-color: #555 #2c2c2c;
-                    }
-                    /* For Chrome, Safari, and Edge */
-                    ::-webkit-scrollbar {
-                      width: 12px;
-                    }
-                    ::-webkit-scrollbar-track {
-                      background: #2c2c2c;
-                    }
-                    ::-webkit-scrollbar-thumb {
-                      background-color: #555;
-                      border-radius: 6px;
-                      border: 3px solid #2c2c2c;
-                    }
-                  </style>` : ''}
-                </head>
-                <body>
-                  ${bodyContent}
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"><\/script>
-                  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"><\/script>
-                  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"><\/script>
-                  <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                      hljs.highlightAll();
-                      renderMathInElement(document.body, {
-                        delimiters: [
-                          {left: '$$', right: '$$', display: true},
-                          {left: '$', right: '$', display: false},
-                          {left: '\\\\(', right: '\\\\)', display: false},
-                          {left: '\\\\[', right: '\\\\]', display: true}
-                        ]
-                      });
-                    });
-                  <\/script>
-                </body>
-                </html>
-              `;
+              originalMarkdown = await response.text();
 
               const iframe = document.createElement('iframe');
               iframe.id = 'project-frame';
               iframe.title = 'Project README';
-              iframe.srcdoc = iframeHtml;
-              // Add an onload event to resize the iframe to its content height.
-              // This eliminates the iframe's own scrollbar, allowing the parent
-              // .scroll-container to be the single scrolling element.
+              mainContent.innerHTML = ''; // Clear loading message
+              mainContent.appendChild(iframe);
+
+              // Initial render of the iframe content
+              updateIframeTheme(themeFromUrl, true);
+
               iframe.onload = () => {
                 const body = iframe.contentWindow.document.body;
                 const html = iframe.contentWindow.document.documentElement;
                 const height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
                 iframe.style.height = `${height}px`;
                 renderFooterContent(project, allProjectsWithIndex);
-                hideLoaderAndShowContent();
+                // Only hide loader on the very first load
+                if (document.getElementById('loader-overlay').style.display !== 'none') {
+                    hideLoaderAndShowContent();
+                }
               };
-
-              mainContent.innerHTML = ''; // Clear loading message
-              mainContent.appendChild(iframe);
             } catch (error) {
                 console.error('Error loading README.', error);
                 mainContent.innerHTML = `<p style="text-align:center; padding: 2rem; color: red;">Could not load README. <a href="${projectUrl}" target="_blank" rel="noopener noreferrer">View on GitHub</a></p>`;
@@ -658,6 +526,117 @@
         hideLoaderAndShowContent();
       }
     });
+
+    function updateIframeTheme(theme, isInitialLoad = false) {
+        const iframe = document.getElementById('project-frame');
+        if (!iframe || !originalMarkdown) return;
+
+        let markdown = originalMarkdown;
+        const { readme_url: readmeUrl, folder: projectTitle } = currentProjectData;
+
+        // To handle raw HTML <img> tags in READMEs, we must convert GitHub blob URLs
+        // to raw content URLs before parsing the markdown.
+        markdown = markdown.replace(
+          /src="https:\/\/github\.com\/(.*?)\/blob\/(.*?)"/g,
+          'src="https://raw.githubusercontent.com/$1/$2"'
+        );
+
+        const isDarkMode = theme === 'dark';
+        const themeStyleUrl = isDarkMode
+          ? 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css'
+          : 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-light.min.css';
+        const bodyBgColor = isDarkMode ? '#282c34' : '#fff';
+        const bodyColor = isDarkMode ? '#abb2bf' : '#24292e';
+
+        // Custom renderer for marked.js to handle image paths
+        const renderer = new marked.Renderer();
+
+        renderer.link = (href, title, text) => {
+          text = href.text
+          href = href.href
+          // Open absolute links in a new tab for a better user experience.
+          if (href && (href.startsWith('http') || href.startsWith('//'))) {
+            return `<a href="${href}" title="${title || ''}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+          }
+          // Return default for relative links.
+          return `<a href="${href}" title="${title || ''}">${text}</a>`;
+        };
+
+        const imageBaseUrl = readmeUrl.substring(0, readmeUrl.lastIndexOf('/') + 1);
+        renderer.image = (href, title, text) => {
+          href = href.href
+          if (typeof href !== 'string') {
+            return text || '';
+           }
+          if (href.startsWith('http') || href.startsWith('data:')) {
+            href = href.split(`${projectTitle}/`)[1]
+          }
+          const fullUrl = new URL(href, imageBaseUrl).href;
+          return `<img src="${fullUrl}" alt="${href}" ${title ? `title="${title}"` : ''}>`;
+        };
+
+        const bodyContent = marked.parse(markdown, { renderer });
+
+        const iframeHtml = `
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>README Content</title>
+            <link rel="stylesheet" href="${themeStyleUrl}">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0KOVEMckDpbOc7ymOFAuVmMfxQJoF2v5E0IeQC2OKZLSsGb9NlqO3" crossorigin="anonymous">
+            <style>
+              body { 
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+                line-height: 1.6;
+                padding: 2rem 4rem;
+                background-color: ${bodyBgColor};
+                color: ${bodyColor};
+                max-width: 900px;
+                margin: 0 auto;
+                box-sizing: border-box;
+              }
+              a { color: ${isDarkMode ? '#ffc107' : '#0056b3'}; text-decoration: none; }
+              a:hover { text-decoration: underline; }
+              h1, h2, h3 { border-bottom: 1px solid ${isDarkMode ? '#444' : '#eee'}; padding-bottom: 0.3em; }
+              pre > code { border-radius: 5px; }
+              code:not(pre > code) { font-family: monospace; background-color: ${isDarkMode ? '#444' : '#f0f0f0'}; color: ${isDarkMode ? '#e0e0e0' : '#24292e'}; padding: 0.2em 0.4em; border-radius: 3px; }
+              img { max-width: 100%; height: auto; }
+              table { border-collapse: collapse; width: 100%; }
+              th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+              th { background-color: #f2f2f2; }
+              .katex { font-size: 1.1em; }
+            </style>
+            ${isDarkMode ? `
+            <style>
+              html { scrollbar-width: thin; scrollbar-color: #555 #2c2c2c; }
+              ::-webkit-scrollbar { width: 12px; }
+              ::-webkit-scrollbar-track { background: #2c2c2c; }
+              ::-webkit-scrollbar-thumb { background-color: #555; border-radius: 6px; border: 3px solid #2c2c2c; }
+            </style>` : ''}
+          </head>
+          <body>
+            ${bodyContent}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"><\/script>
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"><\/script>
+            <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"><\/script>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                hljs.highlightAll();
+                renderMathInElement(document.body, {
+                  delimiters: [
+                    {left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false},
+                    {left: '\\\\(', right: '\\\\)', display: false}, {left: '\\\\[', right: '\\\\]', display: true}
+                  ]
+                });
+              });
+            <\/script>
+          </body>
+          </html>
+        `;
+        iframe.srcdoc = iframeHtml;
+    }
   </script>
 </body>
 </html>
