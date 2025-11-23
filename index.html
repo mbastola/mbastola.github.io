@@ -193,7 +193,7 @@
     }
     body.dark-mode .card img {
       filter: brightness(0.8) contrast(1.1);
-      opacity: 0.85;
+      /*opacity: 0.85;*/
     }
 
 
@@ -271,6 +271,11 @@
       object-fit: cover;
       background-color: #fff;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    body.dark-mode .profile-pic {
+      filter: brightness(0.8) contrast(1.1);
+      opacity: 0.85;
+      border-color: #333;
     }
 
     .contact-line {
@@ -522,9 +527,9 @@
 
         if (currentTheme === 'dark') {
             document.body.classList.add('dark-mode');
-            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        } else {
             themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
         }
 
         themeToggle.addEventListener('click', () => {
@@ -532,14 +537,14 @@
                 document.body.classList.remove('dark-mode');
                 localStorage.setItem('theme', 'light');
                 currentTheme = 'light';
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
                 // Update card links with the new theme
                 updateCardLinks();
             } else {
                 document.body.classList.add('dark-mode');
                 localStorage.setItem('theme', 'dark');
                 currentTheme = 'dark';
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
                 // Update card links with the new theme
                 updateCardLinks();
             }
