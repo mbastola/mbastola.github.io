@@ -447,6 +447,9 @@
         const tagEl = document.createElement("span");
         tagEl.className = "tag";
         tagEl.textContent = `${toTitleCase(tag)} (${tagIndex[tag].length})`;
+        if (tag.toLowerCase() === 'all') {
+            tagEl.classList.add('active');
+        }
         tagEl.onclick = () => {
           // Highlight the clicked tag and deselect others
           document.querySelectorAll('#tag-list .tag').forEach(t => t.classList.remove('active'));
